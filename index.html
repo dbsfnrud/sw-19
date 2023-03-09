@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<title>SW19</title>
+		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css" />
+		<link rel="stylesheet" href="./css/reset.css" />
+		<!-- <link rel="stylesheet" href="https://kit.fontawesome.com/78d77b76b2.css" crossorigin="anonymous"> -->
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<script src="./js/jquery.min.js"></script>
+		<script defer src="js/function.js"></script>
+		<script src="https://kit.fontawesome.com/78d77b76b2.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+		<!-- 메인 슬라이드 영역 -->
+		<style>
+			.bx-wrapper {
+				-moz-box-shadow: none;
+				-webkit-box-shadow: none;
+				box-shadow: none;
+				border: none;
+				background: none;
+			}
+
+			.bx-controls-auto {
+				display: none;
+			}
+
+			.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+				text-align: center;
+				width: 100%;
+			}
+			.bx-pager.bx-default-pager {
+				position: absolute;
+				text-align: center;
+				bottom: 30px;
+				width: 100%;
+				z-index: 10;
+			}
+
+			.bx-wrapper .bx-pager.bx-default-pager a {
+				display: inline-block;
+				width: 15px;
+				height: 15px;
+				margin: 5px 7.5px;
+				box-sizing: border-box;
+				border: 1px solid #000;
+				border-radius: 30px;
+				cursor: pointer;
+				background: transparent;
+				vertical-align: top;
+				opacity: 1;
+			}
+			.bx-controls-direction {
+				display: block;
+			}
+
+			.bx-wrapper .bx-controls-direction a {
+				display: block;
+				position: absolute;
+				top: 55%;
+				width: 20px;
+				height: 30px;
+				text-indent: -9999px;
+				margin: -50px 0 0;
+				z-index: 10;
+				/* background-image: url(./../images/mysite_slides_btn_arrow.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				border: 1px solid #000; */
+			}
+
+			.bx-wrapper .bx-prev {
+				left: 10px;
+				background-image: url(./images/mysite_slides_btn_arrow.png);
+				background-size: cover;
+				background-position: 0 -70px;
+				background-repeat: no-repeat;
+			}
+
+			.bx-wrapper .bx-prev:hover {
+				background-position: 0 -70px;
+			}
+
+			.bx-wrapper .bx-next {
+				right: 10px;
+				background-image: url(./images/mysite_slides_btn_arrow.png);
+				background-size: cover;
+				background-position: 0 -35px;
+				background-repeat: no-repeat;
+			}
+
+			.bx-wrapper .bx-next:hover {
+				background-position: 0 -35px;
+			}
+
+			#main {
+				display: block;
+				margin: 0 auto;
+			}
+
+			#main > .swiper {
+				display: block;
+				position: relative;
+				overflow: hidden;
+				z-index: 1;
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				margin: 0;
+				padding: 0;
+			}
+			.slider {
+				display: flex;
+				position: relative;
+				width: 100%;
+				height: calc(100vh - 134px);
+				z-index: 1;
+				box-sizing: content-box;
+			}
+			.slider > li.fir > a {
+				background-image: url(./images/main_1_pc.jpg);
+			}
+
+			.slider > li.sec > a {
+				background-image: url(./images/main_2_pc.jpg);
+			}
+
+			.slider > li > a {
+				display: block;
+				width: 100%;
+				height: calc(100vh - 134px);
+				background-color: #ddd;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: 50% 50%;
+			}
+
+			@media screen and (max-width: 990px) {
+				.slider > li.fir > a {
+					background-image: url(./images/main_mo.jpg);
+				}
+				.slider > li.sec > a {
+					background-image: url(./images/main_2_mo.jpg);
+				}
+
+				.slider > li > a {
+					height: 570px;
+				}
+
+				.bx-wrapper {
+					height: 570px;
+				}
+
+				.bx-pager.bx-default-pager {
+					position: absolute;
+					text-align: center;
+					bottom: 5px;
+					width: 100%;
+					z-index: 10;
+				}
+
+				.bx-wrapper .bx-pager.bx-default-pager a {
+					width: 8px;
+					height: 8px;
+					margin: 5px 4px;
+				}
+
+				.bx-wrapper .bx-controls-direction a {
+					width: 13px;
+					height: 22px;
+				}
+
+				.bx-wrapper .bx-prev {
+					background-position: 0 -44px;
+				}
+
+				.bx-wrapper .bx-prev:hover {
+					background-position: 0 -44px;
+				}
+				.bx-wrapper .bx-next {
+					background-position: 0 0px;
+				}
+				.bx-wrapper .bx-next:hover {
+					background-position: 0 0px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<header>
+				<div id="topBanner">
+					<div class="desc">
+						<a href="#">SW19 카카오 채널 추가 시, <strong> 5% 추가 할인 CLICK</strong></a>
+					</div>
+				</div>
+				<div id="topBanner">
+					<div class="desc">
+						<a href="#">[발렌타인 기프트세트] HAPPY VALENTINE 프로모션 바로가기</a>
+					</div>
+				</div>
+				<div id="header">
+					<div class="inner">
+						<ul class="headleft">
+							<li class="home">
+								<a href="#">HOME(KR)</a>
+								<ul class="lnb">
+									<li class="menu"><a href="#">Korean</a></li>
+									<li class="menu"><a href="#">English</a></li>
+								</ul>
+							</li>
+							<li class="shop">
+								<a href="#">SHOP</a>
+								<ul class="lnb">
+									<li class="mnu"><a href="#">All Products</a></li>
+									<li class="mnu"><a href="#">Happy Valentine</a></li>
+									<li class="mnu"><a href="#">Perfume</a></li>
+									<li class="mnu"><a href="#">Body Care</a></li>
+									<li class="mnu"><a href="#">Hand Care</a></li>
+									<li class="mnu"><a href="#">Pillow Mist</a></li>
+									<li class="mnu"><a href="#">Gift Set</a></li>
+									<li class="mnu"><a href="#">Sample Kit</a></li>
+									<li class="mnu"><a href="#">Accessory</a></li>
+								</ul>
+							</li>
+
+							<li>
+								<a href="#">STORY</a>
+							</li>
+
+							<li><a href="#">STORES</a></li>
+
+							<li><a href="#">MEMBERSHIP</a></li>
+						</ul>
+						<button type="button" class="nav-btn">네비게이션</button>
+
+						<ul class="headright">
+							<li><a href="#">Log In</a></li>
+
+							<li>
+								<a href="#">Join</a>
+								<div class="tool">
+									<div class="arrow"></div>
+									<p>회원 가입 시 3,000P 지급</p>
+								</div>
+							</li>
+
+							<li><a href="#">Cart</a></li>
+						</ul>
+						<ul class="nav-shop">
+							<li><a href="#">SHOP</a></li>
+							<li class="icon"><a href="#">장바구니</a></li>
+						</ul>
+						<h1 class="logo">
+							<a href="#"><img src="./images/mainlogo.png" alt="SW-19 logo" /></a>
+						</h1>
+					</div>
+				</div>
+			</header>
+
+			<aside>
+				<nav id="mo-nav">
+					<div class="member">
+						<div class="layout">
+							<a href="#">
+								<span>회원가입 시 3,000포인트 증정</span>
+								<button type="button">로그인</button>
+							</a>
+						</div>
+					</div>
+					<div class="fir-list">
+						<h2 class="home-kr">
+							<a href="#">HOME(KR)</a>
+						</h2>
+						<ul class="home-ul">
+							<li><a href="#">Korean</a></li>
+							<li><a href="#">English</a></li>
+						</ul>
+					</div>
+					<div class="sec-list">
+						<h2 class="shop-kr">
+							<a href="#">SHOP</a>
+						</h2>
+						<ul class="shop-ul">
+							<li class="li"><a href="#">All Products</a></li>
+							<li class="li"><a href="#">Happy Valentine</a></li>
+							<li class="li"><a href="#">Perfume</a></li>
+							<li class="li"><a href="#">Body Care</a></li>
+							<li class="li"><a href="#">Hand Care</a></li>
+							<li class="li"><a href="#">Pillow Mist</a></li>
+							<li class="li"><a href="#">Gift Set</a></li>
+							<li class="li"><a href="#">Sample Kit</a></li>
+							<li class="li"><a href="#">Accessory</a></li>
+						</ul>
+						<ol class="category">
+							<li><a href="#">STORY</a></li>
+
+							<li><a href="#">STORES</a></li>
+
+							<li><a href="#">MEMBERSHIP</a></li>
+						</ol>
+					</div>
+				</nav>
+			</aside>
+
+			<div class="shadow">
+				<button type="button" class="btnclose"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+
+			<section>
+				<article id="main">
+					<div class="swiper">
+						<ul class="slider">
+							<li class="slides fir">
+								<a href="#"> </a>
+							</li>
+							<li class="slides sec">
+								<a href="#"> </a>
+							</li>
+						</ul>
+
+						<!-- <div class="swiper-pagination">
+							<span class="bullet on"></span>
+							<span class="bullet"></span>
+						</div> -->
+
+						<!-- <div class="swiper-navigation">
+							<a href="#" class="swiper-navigation prev-btn">이전</a>
+							<a href="#" class="swiper-navigation next-btn">다음</a>
+						</div> -->
+					</div>
+
+					<div class="body-text">
+						<img class="pc" src="./images/valentine02_pc.jpg" alt="#" />
+						<img class="mobile" src="./images/valentine02_mo.jpg" alt="#" />
+					</div>
+
+					<div class="video-wrap">
+						<iframe
+							src="https://player.vimeo.com/video/794053155?h=c78d566f1e"
+							style="max-width: 1250px"
+							width="100%"
+							height="auto"
+							frameborder="0"
+							allow="autoplay; fullscreen; picture-in-picture"
+							allowfullscreen=""
+						></iframe>
+					</div>
+				</article>
+				<article id="inside1">
+					<div class="bg_color"></div>
+					<div class="bg_index">
+						<h2>
+							<img src="./images/inside1-text.png" alt="text" />
+						</h2>
+						<p>시간에 따라 변화하는, 런던 윔블던 숲 속의 향</p>
+
+						<ul>
+							<li>
+								<a href="#">SW19 Story</a>
+							</li>
+							<li>
+								<a href="#">Shop</a>
+							</li>
+						</ul>
+					</div>
+				</article>
+				<article id="mo-inside1">
+					<div class="bg_color"></div>
+					<div class="bg_index">
+						<h2>
+							A TRANSITIONAL SCENT OF
+							<br />
+							THE GREEN FOREST OF WIMBLEDON,
+							<br />
+							<span>
+								LONDON SW19 THAT CHANGES
+								<br />
+								OVER TIME
+							</span>
+						</h2>
+						<p>시간에 따라 변화하는, 런던 윔블던 숲 속의 향</p>
+
+						<ul>
+							<li>
+								<a href="#">Story</a>
+							</li>
+							<li>
+								<a href="#">Shop</a>
+							</li>
+						</ul>
+					</div>
+				</article>
+
+				<article id="product">
+					<ul class="proright">
+						<li class="probox">
+							<a href="#"><img src="./images/6am-pro.jpg" alt="6am" /></a>
+						</li>
+						<li>
+							<div class="text-box">
+								<div class="text">
+									<div class="tit">
+										<a href="#">
+											<img src="./images/6am.png" alt="6am" />
+										</a>
+									</div>
+									<ul class="body-text">
+										<li>
+											<p class="large-text">WIMBLEDON FOREST AT DAWN IN THE MIST <br /><br /></p>
+										</li>
+										<li>Just before the sunrise,</li>
+										<li>the mist of Wimbledon forest drifts along</li>
+										<li>and greets you as you take a stroll.</li>
+										<li>Feel the 6AM scent of the Wimbledon forest’s</li>
+										<li>glistening morning dew and moist soil.</li>
+										<li class="textBottom">
+											<p class="large-text">안개가 자욱한 윔블던 숲의 새벽</p>
+											<br />
+											세상의 아침이 시작되기 전,
+											<br />
+											윔블던의 숲을 산책하는 당신에게
+											<br />
+											푸른 안개가 바람에 실려와 인사를 합니다. <br />
+											이슬 머금은 잔디와 촉촉한 흙내음을 품은 <br />
+											윔블던의 새벽 6시를 느껴보세요.
+										</li>
+									</ul>
+									<div class="proBtn">
+										<a href="#">Discover More</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul>
+						<li class="probox">
+							<a href="#"><img src="./images/noon-pro.jpg" alt="noon" /></a>
+						</li>
+						<li>
+							<div class="text-box">
+								<div class="text">
+									<div class="tit">
+										<a href="#">
+											<img src="./images/noon.png" alt="noon" />
+										</a>
+									</div>
+									<ul class="body-text">
+										<li>
+											<p class="large-text">
+												TOUCH OF SUNLIGHT <br />
+												ON WIMBLEDON LAKE AT NOON<br />
+												<br />
+											</p>
+										</li>
+										<li>Midday, when the sunlight sparkles on the surface of the lake,</li>
+										<li>the bouquet of a full bloom iris and cool aqua scent</li>
+										<li>under the tree shade fills up the air.</li>
+										<li>Feel the scent of NOON at Wimbledon Park.</li>
+										<li class="textBottom">
+											<p class="large-text">햇살에 반짝이는 윔블던 호수의 정오</p>
+											<br />
+											호수에 반짝이는 햇살 찬란한 낮 12시,
+											<br />
+											서늘한 나무그늘 아래 차가운 물 향과 햇살에 만개한
+											<br />
+											아이리스 꽃 향이 어우러진 윔블던 공원의 정오를 느껴보세요. <br />
+										</li>
+									</ul>
+									<div class="proBtn">
+										<a href="#">Discover More</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul class="proright">
+						<li class="probox">
+							<a href="#"><img src="./images/3pm-pro.jpg" alt="3pm" /></a>
+						</li>
+						<li>
+							<div class="text-box">
+								<div class="text">
+									<div class="tit">
+										<a href="#">
+											<img src="./images/3pm.png" alt="3pm" />
+										</a>
+									</div>
+									<ul class="body-text">
+										<li>
+											<p class="large-text">
+												GOLDEN SUN IN THE AFTERNOON <br />
+												AT WIMBLEDON PARK<br /><br />
+											</p>
+										</li>
+										<li>While the forest’s morning dew dries away</li>
+										<li>in the beaming afternoon sunlight,</li>
+										<li>feel the scent of the fully blossomed</li>
+										<li>flowers in the park come together with the freshness</li>
+										<li>of lemon floating on a cup of black tea at 3PM in Wimbledon</li>
+										<li class="textBottom">
+											<p class="large-text">햇살이 내리쬐는 윔블던 공원의 오후</p>
+											<br />
+											이슬 젖은 초록숲이
+											<br />
+											상큼한 햇살에 말라가는 윔블던의 오후.
+											<br />
+											공원에 만개한 꽃들의 향기와 홍차에 띄운 <br />
+											레몬 조각 향기가 어우러진 <br />
+											윔블던의 오후 3시를 느껴보세요.
+										</li>
+									</ul>
+									<div class="proBtn">
+										<a href="#">Discover More</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul>
+						<li class="probox">
+							<a href="#"><img src="./images/9pm-pro.jpg" alt="9pm" /></a>
+						</li>
+						<li>
+							<div class="text-box">
+								<div class="text">
+									<div class="tit">
+										<a href="#">
+											<img src="./images/9pm.png" alt="9pm" />
+										</a>
+									</div>
+									<ul class="body-text">
+										<li>
+											<p class="large-text">
+												BONFIRE SPARKS THE EVENING OF THE WIMBLEDON <br />
+												<br />
+											</p>
+										</li>
+										<li>The night in Wimbledon forest after dark.</li>
+										<li>The whispers of love travel through the crackling bonfire.</li>
+										<li>Feel the Wimbledon’s 9PM scent of the smokey</li>
+										<li>bonfire smoothly blended with sweet vanilla.</li>
+										<li class="textBottom">
+											<p class="large-text">모닥불이 피어 오르는 윔블던 숲의 저녁</p>
+											<br />
+
+											어둠이 내린 윔블던 숲의 저녁.
+											<br />
+											모닥불 타는 소리 사이로 들려오는 연인들의 달콤한 속삭임.
+											<br />
+											바닐라의 달콤함과 숲 속 모닥불의 스모키함이 <br />
+
+											어우러진 윔블던의 저녁 9시를 느껴보세요.
+										</li>
+									</ul>
+									<div class="proBtn">
+										<a href="#">Discover More</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul class="proright">
+						<li class="probox">
+							<a href="#"><img src="./images/midnight-pro.jpg" alt="midnight" /></a>
+						</li>
+						<li>
+							<div class="text-box">
+								<div class="text">
+									<div class="tit">
+										<a href="#">
+											<img src="./images/midnight.png" alt="midnight" />
+										</a>
+									</div>
+									<ul class="body-text">
+										<li>
+											<p class="large-text">
+												MIDNIGHT, A SMALL LAMP LIGHTS UP A<br />
+												COTTAGE IN WIMBLEDON PARK <br /><br />
+											</p>
+										</li>
+										<li>In the still of the night,</li>
+										<li>the soft moonlight surrounds the Wimbledon forest.</li>
+										<li>Feel the sensual MIDNIGHT</li>
+										<li>through mesmerizing touch and scent.</li>
+										<li class="textBottom">
+											<p class="large-text">
+												인적이 드문 윔블던 공원 옆, 작은 등불 하나 <br />
+												켜진 어느 집의 자정
+											</p>
+											<br />
+											은은한 달빛에 감싸인 윔블던 숲 속의 깊은 밤.
+											<br />
+											손 끝을 스치는 살결과 향기에 취한
+											<br />
+											센슈얼한 밤12시를 느껴보세요.
+										</li>
+									</ul>
+									<div class="proBtn">
+										<a href="#">Discover More</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</article>
+
+				<article id="nineBoxs">
+					<div class="boxs-container">
+						<div class="grid-show">
+							<ul class="imgs">
+								<li class="list1">
+									<div class="box">
+										<img src="./images/grid_1.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											SW19 9PM EAU DE PARFUM<br />
+											<br />
+											#sw19fragrance #sw19_9pm #journeytothemoments
+										</div>
+									</div>
+								</li>
+								<li class="list2">
+									<div class="box">
+										<img src="./images/grid_2.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											SW19 NOON EAU DE PARFUM <br />
+											<br />
+											#sw19fragrance #sw19_noon #journeytothemoments
+										</div>
+									</div>
+								</li>
+								<li class="list3">
+									<div class="box">
+										<img src="./images/grid_3.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											SW19 6am EAU DE PARFUM<br />
+											<br />
+											#sw19fragrance #sw19_6am #happyvalentineday
+										</div>
+									</div>
+								</li>
+								<li class="list4">
+									<div class="box">
+										<img src="./images/grid_4.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											따뜻한 감성을 전하는 SW19 발렌타인 기프트 세트를 만나보세요.<br />
+											<br />
+											#sw19fragrance #journeytothemoments #happyvalentineday
+										</div>
+									</div>
+								</li>
+								<li class="list5">
+									<div class="box">
+										<img src="./images/grid_5.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											Send Your Love ♥ <br />
+											<br />
+											#sw19fragrance #happyvalentineday #journeytothemoments
+										</div>
+									</div>
+								</li>
+								<li class="list6">
+									<div class="box">
+										<img src="./images/grid_6.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											Happy Valentine ♡ <br />
+											<br />
+											#sw19fragrance #journeytothemoments #happyvalentineday
+										</div>
+									</div>
+								</li>
+								<li class="list7">
+									<div class="box">
+										<img src="./images/grid_7.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											SW19의 Happy Valentine 프로모션과 함께 아름다운 추억을 만들어보세요. <br />
+											<br />
+											#sw19fragrance #journeytothemoments #happyvalentineday
+										</div>
+									</div>
+								</li>
+								<li class="list8">
+									<div class="box">
+										<img src="./images/grid_8.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											SW19 3PM EAU DE PARFUM <br />
+											<br />
+											#sw19fragrance #sw19_3pm #journeytothemoments
+										</div>
+									</div>
+								</li>
+								<li class="list9">
+									<div class="box">
+										<img src="./images/grid_9.jpg" alt="1" />
+										<a href="#"></a>
+										<div class="text">
+											SW19 MIDNIGHT EAU DE PARFUM <br />
+											<br />
+											#sw19fragrance #sw19_midnight #journeytothemoments
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+
+				<article id="insideBom">
+					<div class="bg-color"></div>
+					<div class="bg-index">
+						<h2>
+							<img src="./images/insideBom_logo.png" alt="sw19 logo" />
+						</h2>
+						<ul>
+							<li>
+								<a href="#">Experience SW19</a>
+							</li>
+							<li>
+								<a href="#" class="google">SW19 in Google Earth</a>
+							</li>
+						</ul>
+						<p>(by Google Maps Street View)</p>
+					</div>
+				</article>
+			</section>
+
+			<footer>
+				<h2>
+					<a href="#">
+						<img src="./images/footer-logo.png" alt="logo" />
+					</a>
+				</h2>
+				<div class="inner">
+					<div class="info-text">
+						<div class="address">
+							<span
+								>Company: (주)왁티 | Owner: 강정훈 / 06028 서울특별시 강남구 압구정로10길 7 (신사동)
+								3층 왁티</span
+							>
+							<span
+								>Company Registration No.: 240-88-00299 / Telecommunication services registration
+								No.: 제2016-서울강남-03076호</span
+							>
+							<span
+								>Email: support@sw19official.com / Tel: 1660-3252 (Mon-Fri : 9:00 - 11:30 / 13:00 -
+								17:30)</span
+							>
+						</div>
+
+						<div class="customer">
+							<p class="copyright">Copyright &copy; <span>SW19</span> . All rights reserved.</p>
+							<ul class="util">
+								<li><a href="#">이용약관</a></li>
+								<li>
+									<span>|</span>
+									<a href="#">개인정보처리방침 </a>
+								</li>
+								<li>
+									<span>|</span>
+									<a href="#">대량주문 / 제휴문의 </a>
+								</li>
+							</ul>
+							<div class="sns">
+								<a href="#">
+									<i class="fa-brands fa-instagram"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+			<div id="toTop">
+				<img src="./images/totop.png" alt="#" />
+			</div>
+		</div>
+	</body>
+</html>
